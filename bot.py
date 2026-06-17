@@ -116,7 +116,7 @@ async def start(message: Message):
 @dp.message(F.text)
 async def chat(message: Message):
     text = message.text
-    answer = ask_ai(text)
+    answer = ask_ai(text, message.from_user.id)
     await message.answer(answer)
 
 # =========================
