@@ -2,7 +2,8 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 from aiogram import F
-import asyncio import os
+import asyncio 
+import os
 from openai import OpenAI
 
 # =========================
