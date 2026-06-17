@@ -2,14 +2,14 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import CommandStart
 from aiogram import F
-import asyncio
+import asyncio import os
 from openai import OpenAI
 
 # =========================
 # НАСТРОЙКИ
 # =========================
-TELEGRAM_TOKEN = "8877394807:AAGVMwhX9QsH0I0AV5zwYNzWrowvI4yFoGs"
-OPENROUTER_API_KEY = "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"
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 # =========================
 # OpenRouter
