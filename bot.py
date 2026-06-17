@@ -43,7 +43,7 @@ def ask_ai(text, user_id):
     })
 
     response = client.chat.completions.create(
-        model=" nvidia/llama-nemotron-rerank-vl-1b-v2:free",
+        model="nvidia/llama-nemotron-embed-vl-1b-v2:free",
         messages=[
             {
                 "role": "system",
