@@ -41,8 +41,8 @@ def ask_ai(text, user_id):
         "content": text
     })
 
-    response = client.chat.completions.create(
-        model="aliceai-llm-flash/latest",
+    response = client.responses.create(
+        model=f"gpt://{YANDEX_FOLDER_ID}/aliceai-llm-flash/latest",
         messages=[
             {
                 "role": "system",
@@ -89,7 +89,7 @@ def ask_ai(text, user_id):
         ]
     )
 
-    answer = response.choices[0].message.content
+    answer = response.output_text
 
     history.append({
         "role": "assistant",
