@@ -89,7 +89,7 @@ def ask_ai(text, user_id):
     ]
 )
 
-answer = response.choices[0].message.content
+    answer = response.choices[0].message.content
     history.append({
         "role": "assistant",
         "content": answer
