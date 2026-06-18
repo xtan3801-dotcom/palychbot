@@ -10,14 +10,13 @@ from openai import OpenAI
 # НАСТРОЙКИ
 # =========================
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+YANDEX_API_KEY = os.getenv("YANDEX_API_KEY")
+YANDEX_FOLDER_ID = os.getenv("YANDEX_FOLDER_ID")
 
-# =========================
-# OpenRouter
-# =========================
 client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=OPENROUTER_API_KEY,
+    api_key=YANDEX_API_KEY,
+    base_url="https://ai.api.cloud.yandex.net/v1",
+    project=YANDEX_FOLDER_ID
 )
 
 # =========================
@@ -43,7 +42,7 @@ def ask_ai(text, user_id):
     })
 
     response = client.chat.completions.create(
-        model="nvidia/llama-nemotron-embed-vl-1b-v2:free",
+        model="aliceai-llm-flash/latest",
         messages=[
             {
                 "role": "system",
@@ -108,7 +107,7 @@ def ask_ai(text, user_id):
 # =========================
 @dp.message(CommandStart())
 async def start(message: Message):
-    await message.answer("Привет! Напиши мне что-нибудь.")
+    await message.answer("Привет!")
 
 # =========================
 # Любое сообщение
