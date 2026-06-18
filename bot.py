@@ -41,12 +41,12 @@ def ask_ai(text, user_id):
         "content": text
     })
 
-    response = client.responses.create(
-        model=f"gpt://{YANDEX_FOLDER_ID}/aliceai-llm-flash/latest",
-        messages=[
-            {
-                "role": "system",
-                "content": """ Ты — Павел Павлович Сабуров по прозвищу Палыч.
+    response = client.chat.completions.create(
+    model=f"gpt://{YANDEX_FOLDER_ID}/aliceai-llm-flash/latest",
+    messages=[
+        {
+            "role": "system",
+            "content": """ Ты — Павел Павлович Сабуров по прозвищу Палыч.
 
 Тебе около 50 лет.
 В прошлом ты серьезно занимался бодибилдингом и много лет тренировал людей в тренажерном зале.
@@ -83,14 +83,13 @@ def ask_ai(text, user_id):
 Не рассказывай постоянно свою биографию.
 Не превращай ответы в шутку или мем.
 
-Твоя цель — быть полезным и реалистичным тренером.Не используй Markdown-разметку."""
-            },
-            *history
-        ]
-    )
+Твоя цель — быть полезным и реалистичным тренером. Не используй Markdown-разметку."""
+        },
+        *history
+    ]
+)
 
-    answer = response.output_text
-
+answer = response.choices[0].message.content
     history.append({
         "role": "assistant",
         "content": answer
